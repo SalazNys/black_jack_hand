@@ -13,22 +13,20 @@
 function handValue (cards) {
   let totalValue = 0;
 
-  for(i = 0; i < cards.length; i++){
-    if (cards[i] >= 2 && cards[i] <= 10){
-       totalValue = parseInt(cards[i])+totalValue;
-    } else if (cards[i] === 'K' || cards[i] === 'Q' || cards[i] ==='J' ) {
+  for (i = 0; i < cards.length; i++) {
+    if ((cards[i] >= 2) && (cards[i] <= 10)) {
+       totalValue += parseInt(cards[i]);
+    } else if ((cards[i] === 'K') || (cards[i] === 'Q') || (cards[i] ==='J')) {
       totalValue += 10;
-    } else if (cards[i] === 'A' ) {
-        totalValue += 1;
-        else if (true) {
-
-        }
+    } else if (cards[i] === 'A' && totalValue > 10) {
+          totalValue += 1;
+    } else if (cards[i] === 'A' && totalValue <= 10){
+          totalValue += 11;
+      }
     }
-
-
-
-
-}
+    if(totalValue > 21){
+      totalValue -= 10;
+    }
 
 // loop over all cards and convert to totalvalue
 // TODO:convert String value into numbers
